@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OktaAuthService } from '@okta/okta-angular';
 import { AuthService } from '../_services/auth.service';
 import { SecurityService } from '../_services/security.service';
 import { TokenStorageService } from '../_services/token-storage.service';
@@ -14,18 +15,28 @@ export class HomeComponent implements OnInit {
   content?: string;
   username?: string;
 
+  isAuthenticated: boolean = false;
+
   constructor(
 	  private securityService: SecurityService,
 	  private vehicleDetailsLTIService: VehicleDetailsLTIService,
+	  private authService: OktaAuthService,
+	  private oktaAuthService: OktaAuthService
 	  ) { }
 
-  ngOnInit(): void {
-
+   async ngOnInit() {
+	this.isAuthenticated = await this.authService.isAuthenticated();
+	if(this.isAuthenticated){
+		const userClaims = await this.authService.getUser();
+		this.username = userClaims.name || "";
+	  }
   }
 
   logout(): void {
     this.securityService.logout();
-    // window.location.reload();
+	// this.oktaAuthService.tokenManager.clear();
+	this.oktaAuthService.signOut();
+    //window.location.reload();
   }
 
   callByAPIGateway() {
