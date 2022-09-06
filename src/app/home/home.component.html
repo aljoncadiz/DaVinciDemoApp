@@ -1,0 +1,28 @@
+<div class="home" style="height: 100vh;">
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<ul class="navbar-nav mr-auto" routerLinkActive="active">
+		  <li class="nav-item">
+			<a href="/home" class="nav-link" routerLink="home" style="padding: unset;">
+				<img src="../../assets/logo.png" class="home-logo" height="30px" width="auto">
+			</a>
+		  </li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+		  <li class="nav-item">
+			<a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+		  </li>
+		  <li class="nav-item">
+			<a href class="nav-link" (click)="logout()">Logout</a>
+		  </li>
+		</ul>
+	  </nav>
+  <div class="home-content">
+	<button class="btn btn-primary" style="border-radius: 0px;" (click)="callByAPIGateway()">
+		API Gateway call
+	</button>
+
+	<button class="btn btn-primary" style="border-radius: 0px;" (click)="callByTotalView()">
+		Direct TV endpoint call
+	</button>
+  </div>
+</div>

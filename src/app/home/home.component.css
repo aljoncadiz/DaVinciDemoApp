@@ -1,0 +1,27 @@
+.navbar {
+	position: fixed;
+    width: 100%;
+	padding: 5px 30px;
+}
+
+.home-logo {
+	margin-left: -30px;
+    margin-top: -10px;
+}
+
+.home-content {
+	height: 100%;
+	display: flex;
+	justify-content: start;
+	align-items: flex-start;
+	background-image: url('../../assets/main_bg.png');
+	background-repeat: no-repeat;
+	background-size: contain;
+    background-position: center;
+	background-color: rgb(227,227,227);
+}
+
+.home-content > button {
+	margin-top: 100px;
+	margin-left: 30px;
+}
